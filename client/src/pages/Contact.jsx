@@ -29,14 +29,11 @@ const Contact = () => {
     setStatus({ loading: true, message: '', type: '' });
 
     try {
-      // Uncomment this when your API is ready
-      // const response = await axios.post(
-      //   `${process.env.REACT_APP_API_URL}/contact`,
-      //   formData
-      // );
-
-      // Simulating API call for now
-      await new Promise(resolve => setTimeout(resolve, 1500));
+      // Connect to your actual API
+      await axios.post(
+        `${process.env.REACT_APP_API_URL}/contact`,
+        formData
+      );
 
       setStatus({
         loading: false,
@@ -58,9 +55,14 @@ const Contact = () => {
       }, 5000);
 
     } catch (error) {
+      console.error('Submission Error:', error);
+      
+      // Extract error message from server response if available
+      const errorMessage = error.response?.data?.message || 'Oops! Something went wrong. Please try again.';
+
       setStatus({
         loading: false,
-        message: 'Oops! Something went wrong. Please try again.',
+        message: errorMessage,
         type: 'error'
       });
     }
