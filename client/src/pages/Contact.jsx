@@ -1,69 +1,80 @@
-import React, { useState } from 'react';
-import axios from 'axios';
-import { FaEnvelope, FaPhone, FaMapMarkerAlt, FaPaperPlane } from 'react-icons/fa';
-import './Contact.css';
+import React, { useState } from "react";
+import axios from "axios";
+import emailjs from "@emailjs/browser";
+import {
+  FaEnvelope,
+  FaPhone,
+  FaMapMarkerAlt,
+  FaPaperPlane,
+} from "react-icons/fa";
+import "./Contact.css";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: ''
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
   });
 
   const [status, setStatus] = useState({
     loading: false,
-    message: '',
-    type: '' // 'success' or 'error'
+    message: "",
+    type: "", // 'success' or 'error'
   });
 
   const handleChange = (e) => {
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setStatus({ loading: true, message: '', type: '' });
+    setStatus({ loading: true, message: "", type: "" });
 
     try {
-      // Connect to your actual API
-      await axios.post(
-        `${process.env.REACT_APP_API_URL}/contact`,
-        formData
-      );
+      // 1. Send Email via EmailJS (Frontend - No blocking!)
+      // REPLACE with your actual IDs from Step 1
+      const serviceId = "service_uk0ldj9";
+      const templateId = "template_nxtvsg8";
+      const publicKey = "uLrIZVuZh25fM7wqo";
 
+      // Create parameters object matching your EmailJS template variables
+      const templateParams = {
+        name: formData.name,
+        email: formData.email,
+        subject: formData.subject,
+        message: formData.message,
+      };
+
+      await emailjs.send(serviceId, templateId, templateParams, publicKey);
+
+      // 2. Save to Database (Backend)
+      // We don't wait for this to finish to show success, but we trigger it.
+      axios
+        .post(`${process.env.REACT_APP_API_URL}/contact`, formData)
+        .catch((err) => console.error("DB Save failed (non-fatal):", err));
+
+      // 3. Show Success
       setStatus({
         loading: false,
-        message: 'Thank you for your message! I will get back to you soon.',
-        type: 'success'
+        message: "Message sent successfully!",
+        type: "success",
       });
 
-      // Reset form
-      setFormData({
-        name: '',
-        email: '',
-        subject: '',
-        message: ''
-      });
+      setFormData({ name: "", email: "", subject: "", message: "" });
 
-      // Clear success message after 5 seconds
       setTimeout(() => {
-        setStatus({ loading: false, message: '', type: '' });
+        setStatus({ loading: false, message: "", type: "" });
       }, 5000);
-
     } catch (error) {
-      console.error('Submission Error:', error);
-      
-      // Extract error message from server response if available
-      const errorMessage = error.response?.data?.message || 'Oops! Something went wrong. Please try again.';
-
+      console.error("EmailJS Error:", error);
       setStatus({
         loading: false,
-        message: errorMessage,
-        type: 'error'
+        message: "Failed to send message. Please try again.",
+        type: "error",
       });
     }
   };
@@ -80,8 +91,9 @@ const Contact = () => {
           <div className="contact-info fade-in-up">
             <h2>Let's Talk</h2>
             <p>
-              Feel free to reach out if you have any questions, project ideas, or just want to say hello. 
-              I'm always open to discussing new projects and creative ideas.
+              Feel free to reach out if you have any questions, project ideas,
+              or just want to say hello. I'm always open to discussing new
+              projects and creative ideas.
             </p>
 
             <div className="contact-details">
@@ -119,7 +131,9 @@ const Contact = () => {
 
           <form onSubmit={handleSubmit} className="contact-form fade-in-up">
             <div className="form-group">
-              <label htmlFor="name" className="form-label">Name *</label>
+              <label htmlFor="name" className="form-label">
+                Name *
+              </label>
               <input
                 type="text"
                 id="name"
@@ -133,7 +147,9 @@ const Contact = () => {
             </div>
 
             <div className="form-group">
-              <label htmlFor="email" className="form-label">Email *</label>
+              <label htmlFor="email" className="form-label">
+                Email *
+              </label>
               <input
                 type="email"
                 id="email"
@@ -147,7 +163,9 @@ const Contact = () => {
             </div>
 
             <div className="form-group">
-              <label htmlFor="subject" className="form-label">Subject *</label>
+              <label htmlFor="subject" className="form-label">
+                Subject *
+              </label>
               <input
                 type="text"
                 id="subject"
@@ -161,7 +179,9 @@ const Contact = () => {
             </div>
 
             <div className="form-group">
-              <label htmlFor="message" className="form-label">Message *</label>
+              <label htmlFor="message" className="form-label">
+                Message *
+              </label>
               <textarea
                 id="message"
                 name="message"
@@ -179,8 +199,8 @@ const Contact = () => {
               </div>
             )}
 
-            <button 
-              type="submit" 
+            <button
+              type="submit"
               className="btn submit-btn"
               disabled={status.loading}
             >
