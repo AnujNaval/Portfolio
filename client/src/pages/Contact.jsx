@@ -1,6 +1,5 @@
-// Contact.jsx
-
 import React, { useState } from 'react';
+import axios from 'axios';
 import { FaEnvelope, FaPhone, FaMapMarkerAlt, FaPaperPlane } from 'react-icons/fa';
 import './Contact.css';
 
@@ -8,13 +7,14 @@ const Contact = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
+    subject: '',
     message: ''
   });
 
   const [status, setStatus] = useState({
     loading: false,
-    success: null,
-    error: null
+    message: '',
+    type: '' // 'success' or 'error'
   });
 
   const handleChange = (e) => {
@@ -26,22 +26,42 @@ const Contact = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setStatus({ loading: true, success: null, error: null });
+    setStatus({ loading: true, message: '', type: '' });
 
-    // Simulate form submission (Replace this with actual EmailJS or API logic)
     try {
+      // Uncomment this when your API is ready
+      // const response = await axios.post(
+      //   `${process.env.REACT_APP_API_URL}/contact`,
+      //   formData
+      // );
+
+      // Simulating API call for now
       await new Promise(resolve => setTimeout(resolve, 1500));
-      setStatus({ 
-        loading: false, 
-        success: "Thank you! Your message has been sent successfully.", 
-        error: null 
+
+      setStatus({
+        loading: false,
+        message: 'Thank you for your message! I will get back to you soon.',
+        type: 'success'
       });
-      setFormData({ name: '', email: '', message: '' });
-    } catch (err) {
-      setStatus({ 
-        loading: false, 
-        success: null, 
-        error: "Something went wrong. Please try again later." 
+
+      // Reset form
+      setFormData({
+        name: '',
+        email: '',
+        subject: '',
+        message: ''
+      });
+
+      // Clear success message after 5 seconds
+      setTimeout(() => {
+        setStatus({ loading: false, message: '', type: '' });
+      }, 5000);
+
+    } catch (error) {
+      setStatus({
+        loading: false,
+        message: 'Oops! Something went wrong. Please try again.',
+        type: 'error'
       });
     }
   };
@@ -51,17 +71,15 @@ const Contact = () => {
       <div className="container">
         <h1 className="section-title fade-in-up">Get In Touch</h1>
         <p className="contact-subtitle fade-in-up">
-          Have a question or want to work together? Feel free to drop me a message!
+          Have a question or want to work together? I'd love to hear from you!
         </p>
 
         <div className="contact-content">
-          {/* Contact Info Column */}
           <div className="contact-info fade-in-up">
             <h2>Let's Talk</h2>
             <p>
-              I'm currently open to new opportunities and collaborations. 
-              Whether you have a question about my work or just want to say hi, 
-              I'll try my best to get back to you!
+              Feel free to reach out if you have any questions, project ideas, or just want to say hello. 
+              I'm always open to discussing new projects and creative ideas.
             </p>
 
             <div className="contact-details">
@@ -97,67 +115,81 @@ const Contact = () => {
             </div>
           </div>
 
-          {/* Contact Form Column */}
-          <form className="contact-form fade-in-up" onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit} className="contact-form fade-in-up">
             <div className="form-group">
-              <label htmlFor="name">Your Name</label>
+              <label htmlFor="name" className="form-label">Name *</label>
               <input
                 type="text"
                 id="name"
                 name="name"
                 value={formData.name}
                 onChange={handleChange}
-                placeholder="John Doe"
+                className="form-input"
                 required
+                placeholder="Your Name"
               />
             </div>
 
             <div className="form-group">
-              <label htmlFor="email">Your Email</label>
+              <label htmlFor="email" className="form-label">Email *</label>
               <input
                 type="email"
                 id="email"
                 name="email"
                 value={formData.email}
                 onChange={handleChange}
-                placeholder="john@example.com"
+                className="form-input"
                 required
+                placeholder="your.email@example.com"
               />
             </div>
 
             <div className="form-group">
-              <label htmlFor="message">Message</label>
+              <label htmlFor="subject" className="form-label">Subject *</label>
+              <input
+                type="text"
+                id="subject"
+                name="subject"
+                value={formData.subject}
+                onChange={handleChange}
+                className="form-input"
+                required
+                placeholder="What's this about?"
+              />
+            </div>
+
+            <div className="form-group">
+              <label htmlFor="message" className="form-label">Message *</label>
               <textarea
                 id="message"
                 name="message"
                 value={formData.message}
                 onChange={handleChange}
-                placeholder="Share your thoughts..."
-                rows="5"
+                className="form-textarea"
                 required
+                placeholder="Tell me more about your project or inquiry..."
               ></textarea>
             </div>
 
-            {status.success && (
-              <div className="status-message success">{status.success}</div>
-            )}
-            
-            {status.error && (
-              <div className="status-message error">{status.error}</div>
+            {status.message && (
+              <div className={`status-message ${status.type}`}>
+                {status.message}
+              </div>
             )}
 
             <button 
               type="submit" 
-              className="submit-btn" 
+              className="btn submit-btn"
               disabled={status.loading}
             >
               {status.loading ? (
                 <>
-                  <div className="btn-spinner"></div> Sending...
+                  <div className="btn-spinner"></div>
+                  Sending...
                 </>
               ) : (
                 <>
-                  Send Message <FaPaperPlane />
+                  <FaPaperPlane /> Send Message
                 </>
               )}
             </button>

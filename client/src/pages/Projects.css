@@ -77,3 +77,18 @@
     padding: 0 20px;
   }
 }
+.error-message {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--text-secondary);
+}
+
+.error-message p {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+  color: #f87171;
+}
+
+.error-message .btn {
+  margin-top: 20px;
+}
