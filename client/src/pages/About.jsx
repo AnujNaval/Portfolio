@@ -22,16 +22,17 @@ const About = () => {
             </div>
             
             <div className="social-links-about">
-              <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer" className="social-btn">
+              {/* Remember to update these hrefs with your actual links */}
+              <a href="https://github.com/AnujNaval" target="_blank" rel="noopener noreferrer" className="social-btn">
                 <FaGithub />
               </a>
-              <a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener noreferrer" className="social-btn">
+              <a href="https://linkedin.com/in/anujnaval13" target="_blank" rel="noopener noreferrer" className="social-btn">
                 <FaLinkedin />
               </a>
-              <a href="https://twitter.com/yourusername" target="_blank" rel="noopener noreferrer" className="social-btn">
+              <a href="https://twitter.com/AnujNaval18683" target="_blank" rel="noopener noreferrer" className="social-btn">
                 <FaTwitter />
               </a>
-              <a href="https://instagram.com/yourusername" target="_blank" rel="noopener noreferrer" className="social-btn">
+              <a href="https://instagram.com/anujnaval_13" target="_blank" rel="noopener noreferrer" className="social-btn">
                 <FaInstagram />
               </a>
             </div>
@@ -45,57 +46,66 @@ const About = () => {
             <div className="about-box">
               <h2 className="about-subtitle">Hello There! 👋</h2>
               <p className="about-text">
-                I'm a passionate Full Stack Developer with a love for creating beautiful, 
-                functional, and user-friendly websites and applications. With expertise in 
-                the MERN stack (MongoDB, Express.js, React, Node.js), I bring ideas to life 
-                through clean code and innovative solutions.
+                I am a Data Science and Machine Learning enthusiast with a passion for uncovering 
+                hidden patterns in data to solve real-world problems. My primary focus lies in building 
+                predictive models, deep learning architectures, and intelligent systems that drive decision-making.
               </p>
               <p className="about-text">
-                My journey in web development started with a curiosity about how websites work, 
-                and it has evolved into a career where I get to solve complex problems and 
-                build amazing digital experiences every day.
+                Uniquely, I also possess a strong background in Full Stack Web Development (MERN Stack). 
+                This combination allows me to not only design complex algorithms but also deploy them 
+                into scalable, user-friendly web applications—bridging the gap between raw data and 
+                end-user experience.
               </p>
               <p className="about-text">
-                When I'm not coding, you can find me exploring new technologies, contributing 
-                to open-source projects, writing technical blogs, or enjoying a good cup of coffee 
-                while brainstorming my next project idea.
+                When I'm not training models or wrangling datasets, you can find me exploring the 
+                latest research papers in AI, contributing to open-source data projects, or automating 
+                my daily tasks with Python scripts.
               </p>
             </div>
 
             <div className="skills-section">
               <h2 className="about-subtitle">Skills & Technologies</h2>
               <div className="skills-grid">
+                
+                {/* Primary Category: DS & ML */}
                 <div className="skill-category">
-                  <h3>Frontend</h3>
+                  <h3>Data Science & ML</h3>
                   <div className="skill-tags">
-                    <span className="skill-tag">React</span>
-                    <span className="skill-tag">JavaScript</span>
-                    <span className="skill-tag">HTML5</span>
-                    <span className="skill-tag">CSS3</span>
-                    <span className="skill-tag">Tailwind</span>
-                    <span className="skill-tag">Bootstrap</span>
+                    <span className="skill-tag">Python</span>
+                    <span className="skill-tag">TensorFlow</span>
+                    <span className="skill-tag">PyTorch</span>
+                    <span className="skill-tag">Scikit-learn</span>
+                    <span className="skill-tag">Pandas/NumPy</span>
+                    <span className="skill-tag">OpenCV</span>
                   </div>
                 </div>
+
+                {/* Secondary Category: Web Dev (MERN) */}
                 <div className="skill-category">
-                  <h3>Backend</h3>
+                  <h3>Web Development</h3>
                   <div className="skill-tags">
+                    <span className="skill-tag">React</span>
                     <span className="skill-tag">Node.js</span>
                     <span className="skill-tag">Express.js</span>
                     <span className="skill-tag">MongoDB</span>
+                    <span className="skill-tag">JavaScript</span>
                     <span className="skill-tag">REST APIs</span>
-                    <span className="skill-tag">MySQL</span>
                   </div>
                 </div>
+
+                {/* Tools Category */}
                 <div className="skill-category">
-                  <h3>Tools & Others</h3>
+                  <h3>Tools & Cloud</h3>
                   <div className="skill-tags">
-                    <span className="skill-tag">Git</span>
-                    <span className="skill-tag">GitHub</span>
+                    <span className="skill-tag">Git/GitHub</span>
+                    <span className="skill-tag">Jupyter</span>
+                    <span className="skill-tag">Google Colab</span>
+                    <span className="skill-tag">SQL</span>
+                    <span className="skill-tag">Docker</span>
                     <span className="skill-tag">VS Code</span>
-                    <span className="skill-tag">Postman</span>
-                    <span className="skill-tag">Figma</span>
                   </div>
                 </div>
+                
               </div>
             </div>
           </div>

@@ -65,11 +65,22 @@
 }
 
 .download-btn {
-  width: 100%;
+  /* Flexbox is perfect for centering */
   display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
+  justify-content: center; /* Centers content horizontally */
+  align-items: center;     /* Centers content vertically */
+  
+  /* Size adjustments */
+  width: 100%;             /* Ensures it spans the full width of the parent */
+  box-sizing: border-box;  /* Ensures padding doesn't make it wider than 100% */
+  
+  /* Spacing */
+  gap: 10px;               /* Space between the icon and text */
+  padding: 10px 20px;      /* Equal padding on Left/Right is crucial */
+  
+  /* Clean up link styles */
+  text-decoration: none;   
+  text-align: center;      
 }
 
 .about-details {

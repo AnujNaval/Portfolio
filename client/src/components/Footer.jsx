@@ -48,7 +48,7 @@ const Footer = () => {
 
         <div className="footer-bottom">
           <p>
-            &copy; {currentYear} Your Name. Made with <FaHeart className="heart-icon" /> and React
+            &copy; {currentYear} Anuj Naval. Made with <FaHeart className="heart-icon" /> and React
           </p>
         </div>
       </div>

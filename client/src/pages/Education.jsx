@@ -1,57 +1,52 @@
-import React from 'react';
-import { FaGraduationCap, FaCertificate, FaAward } from 'react-icons/fa';
-import './Education.css';
+import React from "react";
+import { FaGraduationCap, FaCertificate, FaAward } from "react-icons/fa";
+import "./Education.css";
 
 const Education = () => {
   const education = [
     {
-      degree: "Bachelor of Technology in Computer Science",
-      institution: "University Name",
-      period: "2018 - 2022",
-      description: "Graduated with honors. Specialized in Web Development, Data Structures, and Software Engineering.",
-      grade: "CGPA: 8.5/10"
+      degree: "B.Tech + M.Tech in Computer Science and Engineering",
+      institution: "Indian Institute of Technology Delhi, New Delhi",
+      period: "2021 - 2026",
+      description:
+        "Specialized in Machine Learning, Computer Vision, and Data Science. Coursework includes Deep Learning, Digital Image Processing, and Advanced Algorithms alongside Full Stack Development.",
+      grade: "CGPA: 7.5/10",
     },
     {
-      degree: "Higher Secondary Education",
-      institution: "School Name",
-      period: "2016 - 2018",
-      description: "Focused on Mathematics, Physics, and Computer Science.",
-      grade: "Percentage: 92%"
-    }
+      degree: "Higher Secondary Certificate",
+      institution: "Spring Dales Jr. College, Chhatrapati Sambhajinagar",
+      period: "2019 - 2021", 
+      description: "Stream: Science (Physics, Chemistry, Mathematics). Secured district rank in Mathematics.",
+      grade: "Percentage: 93.17%" 
+    },
+    {
+      degree: "Secondary School Certificate",
+      institution: "Tender Care Home School, Chhatrapati Sambhajinagar",
+      period: "2009 - 2019",
+      description: "Completed foundation in Science and Mathematics with distinction.",
+      grade: "Percentage: 95.60%"
+    },
   ];
 
   const certifications = [
     {
-      title: "Full Stack Web Development",
-      issuer: "Coursera",
-      date: "2023",
-      link: "#"
+      title: "Tools for Data Science",
+      issuer: "IBM",
+      date: "2025",
+      link: "https://coursera.org/share/9a44f65b4f00537beadc59b2fa08c74f",
     },
     {
-      title: "React - The Complete Guide",
-      issuer: "Udemy",
-      date: "2023",
-      link: "#"
+      title: "What is Data Science?",
+      issuer: "IBM",
+      date: "2025",
+      link: "https://coursera.org/share/0f965cd17b9f837db480f1f8e729e14a",
     },
-    {
-      title: "Node.js Developer Certification",
-      issuer: "LinkedIn Learning",
-      date: "2022",
-      link: "#"
-    },
-    {
-      title: "MongoDB for Developers",
-      issuer: "MongoDB University",
-      date: "2022",
-      link: "#"
-    }
   ];
 
   const achievements = [
-    "Winner of University Hackathon 2022",
-    "Best Project Award in Final Year",
-    "Published research paper on Web Technologies",
-    "Active contributor to open source projects"
+    "Meesho DICE Challenge 2.0 - Round 2",
+    "JEE Advanced: AIR - 18(PwD)",
+    "JEE Mains: AIR - 22(PwD)"
   ];
 
   return (
@@ -94,7 +89,9 @@ const Education = () => {
                 <h3>{cert.title}</h3>
                 <p className="cert-issuer">{cert.issuer}</p>
                 <span className="cert-date">{cert.date}</span>
-                <a href={cert.link} className="cert-link">View Certificate</a>
+                <a href={cert.link} className="cert-link">
+                  View Certificate
+                </a>
               </div>
             ))}
           </div>
