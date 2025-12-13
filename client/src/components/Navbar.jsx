@@ -37,6 +37,9 @@ const Navbar = () => {
             <Link to="/education" className={`nav-link ${isActive('/education')}`} onClick={closeMenu}>
               Education
             </Link>
+            <Link to="/experience" className={`nav-link ${isActive('/experience')}`} onClick={closeMenu}>
+              Experience
+            </Link>
             <Link to="/projects" className={`nav-link ${isActive('/projects')}`} onClick={closeMenu}>
               Projects
             </Link>

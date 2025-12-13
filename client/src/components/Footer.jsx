@@ -12,16 +12,16 @@ const Footer = () => {
           <div className="footer-section">
             <h3 className="footer-title">Let's Connect</h3>
             <div className="social-links">
-              <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer" className="social-link">
+              <a href="https://github.com/AnujNaval" target="_blank" rel="noopener noreferrer" className="social-link">
                 <FaGithub />
               </a>
-              <a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener noreferrer" className="social-link">
+              <a href="https://linkedin.com/in/anujnaval13" target="_blank" rel="noopener noreferrer" className="social-link">
                 <FaLinkedin />
               </a>
-              <a href="https://twitter.com/yourusername" target="_blank" rel="noopener noreferrer" className="social-link">
+              <a href="https://twitter.com/AnujNaval18683" target="_blank" rel="noopener noreferrer" className="social-link">
                 <FaTwitter />
               </a>
-              <a href="mailto:your.email@example.com" className="social-link">
+              <a href="mailto:navalanuj@gmail.com" className="social-link">
                 <FaEnvelope />
               </a>
             </div>

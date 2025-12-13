@@ -1,0 +1,232 @@
+/* Experience.css */
+
+.experience-page {
+  padding: 60px 0 100px;
+}
+
+/* Timeline Container - Matching Education.css logic */
+.experience-timeline {
+  position: relative;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding-left: 40px;
+}
+
+/* The vertical line */
+.experience-timeline::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--gradient);
+  border-radius: 2px;
+}
+
+.experience-item {
+  position: relative;
+  margin-bottom: 60px;
+}
+
+.experience-item:last-child {
+  margin-bottom: 0;
+}
+
+/* The circular icon on the timeline */
+.experience-dot {
+  position: absolute;
+  left: -65px; /* Adjusted to align center with the line */
+  top: 0;
+  width: 50px;
+  height: 50px;
+  background: var(--dark-bg);
+  border: 2px solid var(--primary-color);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary-color);
+  font-size: 1.2rem;
+  z-index: 2;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 0 4px var(--dark-bg); /* Creates space around the dot */
+}
+
+.experience-item:hover .experience-dot {
+  background: var(--gradient);
+  color: white;
+  transform: scale(1.1);
+  border-color: transparent;
+}
+
+/* Card Styling */
+.experience-content {
+  background: var(--light-bg);
+  padding: 35px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+/* Little arrow pointing to the timeline */
+.experience-content::before {
+  content: '';
+  position: absolute;
+  left: -10px;
+  top: 20px;
+  width: 20px;
+  height: 20px;
+  background: var(--light-bg);
+  transform: rotate(45deg);
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.experience-content:hover {
+  transform: translateY(-5px);
+  border-color: var(--primary-color);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.experience-content:hover::before {
+  border-color: var(--primary-color);
+}
+
+/* Header Section */
+.experience-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 25px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 20px;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.role-company h3 {
+  font-size: 1.6rem;
+  color: var(--text-primary);
+  margin-bottom: 5px;
+}
+
+.role-company h4 {
+  font-size: 1.2rem;
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 600;
+}
+
+.meta-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+}
+
+.meta-info span {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+}
+
+.meta-info .period {
+  color: var(--primary-color);
+  font-weight: 500;
+}
+
+/* List Styling */
+.experience-list {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 25px;
+}
+
+.experience-list li {
+  position: relative;
+  padding-left: 25px;
+  margin-bottom: 12px;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  font-size: 1.05rem;
+}
+
+.experience-list li::before {
+  content: '▹';
+  position: absolute;
+  left: 0;
+  color: var(--primary-color);
+  font-size: 1.2rem;
+  line-height: 1.6;
+}
+
+/* Tech Stack Tags */
+.tech-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.tech-tag {
+  padding: 6px 14px;
+  background: rgba(99, 102, 241, 0.1);
+  color: var(--primary-color);
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  border: 1px solid transparent;
+}
+
+.experience-content:hover .tech-tag {
+  background: rgba(99, 102, 241, 0.2);
+  border-color: rgba(99, 102, 241, 0.3);
+}
+
+.tech-tag:hover {
+  background: var(--gradient);
+  color: white;
+  transform: translateY(-2px);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .experience-timeline {
+    padding-left: 30px;
+  }
+
+  .experience-dot {
+    left: -55px;
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
+  }
+
+  .experience-content {
+    padding: 25px;
+  }
+
+  .experience-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+
+  .meta-info {
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+    margin-top: 5px;
+  }
+
+  .role-company h3 {
+    font-size: 1.4rem;
+  }
+}
