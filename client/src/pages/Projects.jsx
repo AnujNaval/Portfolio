@@ -1,60 +1,50 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React, { useState } from 'react';
 import ProjectCard from '../components/ProjectCard';
 import './Projects.css';
 
+// 1. Hardcoded data definition
+const projectsData = [
+  {
+    title: 'Income Prediction Using Decision Trees & Random Forest',
+    description: 'Implemented decision tree classifier from scratch using mutual information and entropy-based splitting criteria. Developed post-pruning algorithm with ensemble methods reducing tree complexity by 98%. Built Random Forest with grid search achieving 85.45% accuracy.',
+    image: '/images/decision_tree.png',
+    link: 'https://github.com/AnujNaval/Income-Prediction-Using-Decision-Trees-and-Random-Forest-Ensemble',
+    github: 'https://github.com/AnujNaval/Income-Prediction-Using-Decision-Trees-and-Random-Forest-Ensemble',
+    technologies: ['Python', 'Machine Learning', 'Random Forest', 'Decision Trees'],
+    featured: true
+  },
+  {
+    title: 'Traffic Sign Classification using Neural Networks',
+    description: 'Engineered deep learning neural networks from scratch with backpropagation and cross-entropy loss. Implemented adaptive learning rate scheduling with ReLU activation. Conducted comparative analysis using grid search across multi-layer architectures.',
+    image: '/images/neural_network.png',
+    link: 'https://github.com/AnujNaval/Traffic-Sign-Classification-Using-Deep-Neural-Networks',
+    github: 'https://github.com/AnujNaval/Traffic-Sign-Classification-Using-Deep-Neural-Networks',
+    technologies: ['Python', 'Deep Learning', 'Neural Networks', 'Computer Vision'],
+    featured: true
+  },
+  {
+    title: 'Secure Messaging System with AES Encryption and Database Integration',
+    description: 'Architected modular C++ cryptographic messaging system using OpenSSL EVP API for AES-256-CBC encryption/decryption. Engineered robust multi-threaded TCP server with SQL database integration for secure message persistence and retrieval. Implemented comprehensive cryptographic security protocols including random IV generation and replay attack prevention mechanisms.',
+    image: '/images/secure_messaging.png',
+    link: 'https://github.com/AnujNaval/Secure-Messaging-System-with-AES-Encryption-and-Database-Integration',
+    github: 'https://github.com/AnujNaval/Secure-Messaging-System-with-AES-Encryption-and-Database-Integration',
+    technologies: ['C++', 'OpenSSL', 'SQL', 'Socket Programming', 'Cryptography', 'Multi-threading'],
+    featured: true
+  }
+];
+
 const Projects = () => {
-  const [projects, setProjects] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  // 2. State is only needed for the filter now, not the data itself
   const [filter, setFilter] = useState('all');
 
-  useEffect(() => {
-    fetchProjects();
-  }, []);
-
-  const fetchProjects = async () => {
-    try {
-      setLoading(true);
-      const response = await axios.get(`${process.env.REACT_APP_API_URL}/projects`);
-      setProjects(response.data);
-      setLoading(false);
-    } catch (error) {
-      console.error('Error fetching projects:', error);
-      setError('Failed to load projects. Please try again later.');
-      setLoading(false);
-    }
-  };
-
+  // 3. Filter logic applied directly to the hardcoded array
   const filteredProjects = filter === 'all' 
-    ? projects 
-    : projects.filter(project => 
+    ? projectsData 
+    : projectsData.filter(project => 
         project.technologies.some(tech => 
           tech.toLowerCase().includes(filter.toLowerCase())
         )
       );
-
-  if (loading) {
-    return (
-      <div className="loading">
-        <div className="spinner"></div>
-      </div>
-    );
-  }
-
-  if (error) {
-    return (
-      <div className="projects-page section">
-        <div className="container">
-          <h1 className="section-title fade-in-up">My Projects</h1>
-          <div className="error-message">
-            <p>{error}</p>
-            <button onClick={fetchProjects} className="btn">Retry</button>
-          </div>
-        </div>
-      </div>
-    );
-  }
 
   return (
     <div className="projects-page section">
@@ -98,8 +88,9 @@ const Projects = () => {
         </div>
 
         <div className="projects-grid">
-          {filteredProjects.map((project) => (
-            <ProjectCard key={project._id} project={project} />
+          {filteredProjects.map((project, index) => (
+            // Changed key to project.title (or index) since _id doesn't exist in the local array
+            <ProjectCard key={project.title || index} project={project} />
           ))}
         </div>
 
