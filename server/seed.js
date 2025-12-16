@@ -26,6 +26,15 @@ const projects = [
     github: 'https://github.com/AnujNaval/Traffic-Sign-Classification-Using-Deep-Neural-Networks',
     technologies: ['Python', 'Deep Learning', 'Neural Networks', 'Computer Vision'],
     featured: true
+  },
+  {
+    title: 'Secure Messaging System with AES Encryption and Database Integration',
+    description: 'Architected modular C++ cryptographic messaging system using OpenSSL EVP API for AES-256-CBC encryption/decryption. Engineered robust multi-threaded TCP server with SQL database integration for secure message persistence and retrieval. Implemented comprehensive cryptographic security protocols including random IV generation and replay attack prevention mechanisms.',
+    image: '/images/secure_messaging.png',
+    link: 'https://github.com/AnujNaval/Secure-Messaging-System-with-AES-Encryption-and-Database-Integration',
+    github: 'https://github.com/AnujNaval/Secure-Messaging-System-with-AES-Encryption-and-Database-Integration',
+    technologies: ['C++', 'OpenSSL', 'SQL', 'Socket Programming', 'Cryptography', 'Multi-threading'],
+    featured: true
   }
 ];
 

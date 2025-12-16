@@ -89,6 +89,12 @@ const Projects = () => {
           >
             Deep Learning
           </button>
+          <button 
+            className={`filter-btn ${filter === 'cryptography' ? 'active' : ''}`}
+            onClick={() => setFilter('cryptography')}
+          >
+            Cryptography
+          </button>
         </div>
 
         <div className="projects-grid">
