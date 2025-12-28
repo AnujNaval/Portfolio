@@ -68,7 +68,7 @@ const Education = () => {
                   <h4>{edu.institution}</h4>
                   <span className="timeline-period">{edu.period}</span>
                   <p>{edu.description}</p>
-                  <span className="grade-badge">{edu.grade}</span>
+                  {/* <span className="grade-badge">{edu.grade}</span> */}
                 </div>
               </div>
             ))}
